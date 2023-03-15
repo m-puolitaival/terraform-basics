@@ -1,6 +1,6 @@
 module "module1" {
   # Module source for local folder
-  source = "./module1"
+  source = "./module"
 
   # Example module source when using GIT
   # source = "git::https://dev.azure.com/azuredevops/azuredevops/_git/azuredevops?ref=main"
