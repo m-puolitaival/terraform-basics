@@ -1,0 +1,28 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- none
+
+steps:
+- script: echo "Running an example terraform script.."
+  displayName: 'Hello world'
+
+- task: TerraformInstaller@0
+  displayName: install terraform
+  inputs:
+    terraformVersion: 1.4.0
+
+- script: |
+    terraform init
+  displayName: 'terraform init'
+
+- script: |
+    terraform plan -var-file=environment.prod.tfvars
+  displayName: 'terraform plan'
+
+- script: |
+    terraform apply -var-file=environment.prod.tfvars -auto-approve
+  displayName: 'terraform apply'
